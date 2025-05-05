@@ -1,0 +1,93 @@
+.main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    height: 90vh;
+    width: 100%;
+    background-image: url("https://static.scientificamerican.com/sciam/cache/file/48333A42-946B-4866-8244448638825A06_source.jpg?crop=16%3A9%2Csmart&w=1920");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.data form{
+    font-size: 2.4em;
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    border-radius: 10px;
+    height: 60%;
+    width: 70%;
+    background-color:rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 70%;
+    width: 100%;
+}
+
+.form-inputs{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-inputs input{
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+
+}
+.data textarea{
+    line-height: 1.4;
+    padding: 10px 20px;
+    width: 100%;
+    overflow: scroll;
+    resize: none;
+    border-radius: 20px;
+}
+.data button{
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 999px;
+}
+
+.mess, .data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    /* color: rgb(233, 238, 242); */
+}
+.mess{
+    justify-content: flex-start;
+}
+.left-text{
+    color: white;
+    text-align: left;
+    max-width: 600px;
+    margin-left: 2rem;
+}
+.left-text h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.left-text p {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-top: 1rem;
+
+}
