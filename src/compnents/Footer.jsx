@@ -3,8 +3,8 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-sections">
-        <div className="footer-column">
+      <div className="footer1">
+        <div className="footer2">
           <h3>Quick Links</h3>
           <ul>
             <li>About Us</li>
@@ -14,13 +14,13 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="footer-column">
+        <div className="footer2">
           <h3>Contact Us</h3>
           <p>Email: contact@yourcompany.com</p>
           <p>Phone: +1 234 567 890</p>
         </div>
 
-        <div className="footer-column">
+        <div className="footer2">
           <h3>Follow Us</h3>
           <div className="social-icons">
             hello here I will add icons
