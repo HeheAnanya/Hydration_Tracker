@@ -16,18 +16,18 @@ const Footer = () => {
 
         <div className="footer2">
           <h3>Contact Us</h3>
-          <p>Email: contact@yourcompany.com</p>
+          <p>Email: contact@hydra.com</p>
           <p>Phone: +1 234 567 890</p>
         </div>
 
         <div className="footer2">
           <h3>Follow Us</h3>
           <div className="social-icons">
-            hello here I will add icons
+             here I will add icons
           </div>
         </div>
       </div>
-      <p className="footer-bottom">© 2025 Your Company Name. All rights reserved.</p>
+      <p className="footer-bottom">© 2025 Hydra. All rights reserved.</p>
     </footer>
   );
 };
