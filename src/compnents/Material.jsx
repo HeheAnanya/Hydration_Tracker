@@ -5,11 +5,11 @@ const Material = (prop) => {
   return (
     <div className='item'>
       <div className='image-container'>
-        <img src={prop.image}></img>
+        <a href={prop.link}><img src={prop.image}></img></a>
         </div>
       <div className='image-info'>
         <p className='product-price'>{prop.price}</p>
-        <p>{prop.name}</p>
+        <p className='product-name'>{prop.name}</p>
         {/* <p>{prop.description}</p> */}
         </div>
     </div>
