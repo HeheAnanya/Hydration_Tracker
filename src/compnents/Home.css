@@ -2,14 +2,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px;
-    padding: 0px;
+    /* margin: 0px; */
+    padding: 0 5%;
     height: 90vh;
     width: 100%;
     background-image: url("https://static.scientificamerican.com/sciam/cache/file/48333A42-946B-4866-8244448638825A06_source.jpg?crop=16%3A9%2Csmart&w=1920");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    box-sizing: border-box;
 }
 .data form{
     font-size: 2.4em;
@@ -73,7 +74,7 @@ button:hover{
 
 .mess, .data{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     width: 50%;
     height: 100%;
@@ -87,14 +88,24 @@ button:hover{
     text-align: left;
     max-width: 600px;
     margin-left: 2rem;
+
+    /*  new  */
+    /* background: rgba(0, 0, 0, 0.5); */
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(3px);
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); */
+/*  */
 }
 .left-text h1 {
-    font-size: 2rem;
+    font-size: 3.3rem;
     font-weight: bold;
+    line-height: 1.2;
 }
 .left-text p {
-    font-size: 1.2rem;
+    font-size: 2.5rem;
     font-weight: normal;
     margin-top: 1rem;
+    /* color: #d0e7f7; */
 
 }
