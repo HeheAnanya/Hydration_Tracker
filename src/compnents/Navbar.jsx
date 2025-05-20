@@ -13,7 +13,6 @@ const Navbar = () => {
                     </ul>
                 <div className='formality'>
                 <button className='login'>Login</button>
-                <button className='sign_up'>Sign Up</button>
                 </div>
 
         </div>
