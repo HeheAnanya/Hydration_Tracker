@@ -1,6 +1,9 @@
 import React from 'react'
 import logo from '../assets/logo.png'
 import './Navbar.css'
+import Login from './Login'
+// import { auth, provider } from "../Firebase"
+// import { signInWithPopup, onAuthStateChanged, signOut } from 'firebase/auth';
 const Navbar = () => {
     return (
         <>
@@ -12,7 +15,8 @@ const Navbar = () => {
                         <li><a href="#" >FACTS</a></li>
                     </ul>
                 <div className='formality'>
-                <button className='login'>Login</button>
+                    <Login/>
+                {/* <button className='login'>Login</button> */}
                 </div>
 
         </div>

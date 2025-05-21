@@ -1,3 +1,15 @@
+// import { initializeApp } from "firebase/app";
+// import { getAuth, GoogleAuthProvider } from "firebase/auth";
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBUtyQUDpyUAaxJg5bBktVdNDSFMlgTjxQ",
+//   authDomain: "learn-c25f2.firebaseapp.com",
+//   projectId: "learn-c25f2",
+//   storageBucket: "learn-c25f2.firebasestorage.app",
+//   messagingSenderId: "635077544408",
+//   appId: "1:635077544408:web:ec212a9428638f465d0aad"
+// };
+
+// export const app = initializeApp(firebaseConfig);
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
