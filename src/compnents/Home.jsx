@@ -15,8 +15,8 @@ const Home = () => {
       <h2>Get in Touch</h2>
       <div className='form-container'>
       <div className='form-inputs'>
-      <input placeholder='Your Name' type='text' />
-      <input placeholder='Your Email' type='email' />
+      <input placeholder='Your Name' type='text' required/>
+      <input placeholder='Your Email' type='email' required/>
       <textarea placeholder='Your Message' />
       </div>
       <button>Post your Message</button>

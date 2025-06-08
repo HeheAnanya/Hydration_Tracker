@@ -55,6 +55,9 @@
   /* width: 40px; */
 
 }
+.social-icons img:hover{
+  height: 50px;
+}
 
 .footer-bottom {
   font-size: 0.9rem;
