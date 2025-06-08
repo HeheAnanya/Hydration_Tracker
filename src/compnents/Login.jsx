@@ -9,17 +9,19 @@ function Login() {
       .then((result) => {
         const user = result.user;
         console.log("User Info:", user);
-        // alert(`Welcome, ${user.displayName}`);
+        alert(`Welcome, ${user.displayName}`);
+       return( <button className='login'>`${user.displayName}`</button>)
       })
       .catch((error) => {
         console.error("Error during login:", error);
-        alert("Failed to Login");
+        // alert("Failed to Login");
       });
   };
 
   return (
     <div>
         {/* <Navbar/> */}
+      
       <button onClick={handleLogin} className='login'>Login</button>
     </div>
   );

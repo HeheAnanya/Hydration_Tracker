@@ -1,5 +1,9 @@
 import React from 'react';
 import './Footer.css';
+import insta from '../assets/insta.png'
+import linkedin from '../assets/linkedin.png'
+import facebook from '../assets/facebook.png'
+import tw from '../assets/tw.png'
 const Footer = () => {
   return (
     <footer className="footer">
@@ -7,10 +11,10 @@ const Footer = () => {
         <div className="footer2">
           <h3>Quick Links</h3>
           <ul>
-            <li>About Us</li>
-            <li>Services</li>
-            <li>Privacy Policy</li>
-            <li>Terms of Service</li>
+            <li><a href='#' className='link'>Home</a> </li>
+            <li><a href='#' className='link'>About Us</a></li>
+            <li><a href='#' className='link'>Facts</a></li>
+            <li><a href='#' className='link'>Progress</a></li>
           </ul>
         </div>
 
@@ -23,7 +27,11 @@ const Footer = () => {
         <div className="footer2">
           <h3>Follow Us</h3>
           <div className="social-icons">
-             here I will add icons
+            <img src={insta}></img>
+            <img src={linkedin}></img>
+            <img src={tw}></img>
+            <img src={facebook}></img>
+            
           </div>
         </div>
       </div>

@@ -25,13 +25,13 @@
     font-size: 20px;
 }
 .topics li a:hover {
-    color: #ff7f7f; 
+    color: #7ff6ff; 
   }
 .logo{
     height: 80px;
     width: 80px;
     background-color: transparent;
-    margin-left: 20px;
+    margin-left: 2rem;
 }
 .logo:hover{
     height: 80px;
@@ -50,6 +50,8 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    margin-right: 2rem;
+    font-size: larger;
 
     
 
