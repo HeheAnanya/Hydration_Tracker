@@ -1,7 +1,26 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './Home.css'
 
 const Home = () => {
+  const [name,setName] = useState("")
+  const [email,setEmail] = useState("")
+  const [mess,setMess] = useState("")
+  const [data,setData] = useState([])
+  function query(e){
+    e.preventDefault()
+    setData([...data, {id: Date.now(),name: name, email: email, message:mess}])
+    setEmail("")
+    setMess("")
+    setName("")
+    // console.log(data)
+  }
+
+
+
+
+
+
+
   return (
 <div className='main'>
   <div className='mess'>
@@ -15,11 +34,11 @@ const Home = () => {
       <h2>Get in Touch</h2>
       <div className='form-container'>
       <div className='form-inputs'>
-      <input placeholder='Your Name' type='text' required/>
-      <input placeholder='Your Email' type='email' required/>
-      <textarea placeholder='Your Message' />
+      <input placeholder='Your Name' type='text' value={name} onChange={(e)=>setName(e.target.value)}/>
+      <input placeholder='Your Email' type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+      <textarea placeholder='Your Message'  value={mess} onChange={(e)=>setMess(e.target.value)}/>
       </div>
-      <button>Post your Message</button>
+      <button onClick={query}>Post your Message</button>
       </div>
     </form>
   </div>

@@ -7,7 +7,7 @@ const Material = (prop) => {
       <div className='image-container'>
         <a href={prop.link}><img src={prop.image}></img></a>
         </div>
-      <div className='image-info'>
+      <div className='image-info' id={prop.id}>
         <p className='product-price'>{prop.price}</p>
         <p className='product-name'>{prop.name}</p>
         {/* <p>{prop.description}</p> */}
