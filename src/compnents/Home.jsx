@@ -8,19 +8,12 @@ const Home = () => {
   const [data,setData] = useState([])
   function query(e){
     e.preventDefault()
-    setData([...data, {id: Date.now(),name: name, email: email, message:mess}])
+    setData([...data, {"id": Date.now(), "name": name, "email": email, "message":mess}])
     setEmail("")
     setMess("")
     setName("")
-    // console.log(data)
+    console.log(data)
   }
-
-
-
-
-
-
-
   return (
 <div className='main'>
   <div className='mess'>

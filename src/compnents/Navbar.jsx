@@ -15,6 +15,7 @@ const Navbar = () => {
                         <li onClick={()=>(navigate("/about"))}><a href="#">ABOUT</a></li>
                         <li onClick={()=>(navigate("/facts"))}><a href="#">FACTS</a></li>
                         <li onClick={()=>(navigate("/progress"))}><a href="#">PROGRESS</a></li>
+                        <li onClick={()=>(navigate("/blog"))}><a href="#">BLOG</a></li>
 
                     </ul>
                 <div className='formality'>

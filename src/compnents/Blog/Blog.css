@@ -1,0 +1,14 @@
+.blog{
+    /* height: 100vh; 
+    width: 100vw;;  */
+    background-color: rgb(239, 240, 248); 
+    /* padding-top: 2rem;  */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    /* overflow: scroll; */
+    /* flex-direction: column; */
+
+}

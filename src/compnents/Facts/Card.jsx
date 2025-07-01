@@ -22,7 +22,8 @@ import './Card.css';
 
 const Card = (props) => {
   return (
-    <div className='cards'>
+    <>
+    <a href={props.link}><div className='cards'>
       <div className='CardContent'>
         <img src={props.source} alt={props.alt} />
         <div className='overlay'>
@@ -30,7 +31,8 @@ const Card = (props) => {
           <p>{props.par}</p>
         </div>
       </div>
-    </div>
+    </div></a>
+  </>
   );
 };
 

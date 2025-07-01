@@ -1,13 +1,76 @@
 .footer {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  padding: 3rem 2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer1 h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.footer1 h3:hover {
+  transform: scale(1.05);
+}
+
+.footer2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  line-height: 1.6;
+}
+
+.footer2 h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer2 h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer2 p {
+  font-size: 0.95rem;
+  margin: 0.2rem 0;
+  opacity: 0.85;
+}
+
+/* .footer {
+  display: flex;
+  flex-direction: column/;
   background-color: #1a1a1a;
   color: white;
   padding: 2rem;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
 .footer1 {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin-bottom: 1.5rem;
 }
@@ -52,7 +115,7 @@
 .social-icons img{
   height: 1.5em;
 
-  /* width: 40px; */
+  width: 40px;
 
 }
 .social-icons img:hover{
@@ -73,11 +136,11 @@
   font-size: large;
 
 }
-/* .social-icons{
+.social-icons{
   height: 25px;
   width: 40px;
   margin: 0px;
-} */
+}
 
 
 
@@ -127,4 +190,4 @@
     color: #fffbfb;
     font-weight: 500;
     transition: color 0.3s ease;
-  } */
+  } */ 

@@ -10,7 +10,7 @@ function Login() {
       .then((result) => {
         const user = result.user;
         setName(user)
-        alert(`Welcome, ${user.uid}`);
+        // alert(`Welcome, ${user.uid}`);
       })
       .catch((error) => {
         console.error("Error during login:", error);
@@ -24,7 +24,6 @@ function Login() {
       ) : (
         <button onClick={handleLogin} className="login">Login</button>
       )}
-      {/* <button onClick={handleLogin} className='login'>{}</button> */}
     </div>
   );
 }

@@ -6,21 +6,25 @@ const Content = () => {
     const list=[
         {source:"https://www.nutrition.org.uk/media/uonbhr1g/water-in-glass.jpg?width=1600&height=900&rnd=133602284844030000&format=webp ",
         alternate:"Water",
-        text_p:"Boosts brain function, reduces fatigue"
+        text_p:"Boosts brain function, reduces fatigue",
+        link:"https://www.healthline.com/health/food-nutrition/why-is-water-important"
 
         },
         {source:"https://www.nutrition.org.uk/media/qrdpzqmn/fruit-juice.jpg?width=1600&height=900&rnd=133602284847170000&format=webp",
         alternate:"Fruit juices & smoothies",
-        text_p:"Rich in vitamins, natural sugar energy"
+        text_p:"Rich in vitamins, natural sugar energy",
+        link:"https://www.medicalnewstoday.com/articles/fruit-juice"
 
         },
         {source:"https://www.nutrition.org.uk/media/czbmvhat/glass-of-milk.jpg?width=1600&height=900&rnd=133602284847030000&format=webp",
         alternate:"Milk",
-        text_p:"Calcium-rich, strong bones"
+        text_p:"Calcium-rich, strong bones",
+        link:"https://www.healthline.com/nutrition/milk-benefits"
         },
-        {source:"https://www.nutrition.org.uk/media/oewn3vos/plant-based-milk.jpg?width=1600&height=900&rnd=133602284847100000&format=webp",
-        alternate:"Plant-based milk",
-        text_p:"Dairy-free, heart-healthy"
+        {source:"https://www.seriouseats.com/thmb/2nouHHsjM0bN1vwXMOZGUkLFsJ8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2017__12__20171115-chicken-soup-vicky-wasik-11-80db1a04d84a43a089e0559efdddd517.jpg",
+        alternate:"Soup",
+        text_p:"Warm and soothing, packed with nutrients",
+        link:"https://www.healthline.com/nutrition/is-soup-healthy"
         },
 
     ]
@@ -63,7 +67,7 @@ const Content = () => {
                         <div className='card'>
                 {list.map((e)=>{
                     return (
-                        <Card source={e.source} alt={e.alternate} head={e.text_h1} par={e.text_p}/>
+                        <Card source={e.source} alt={e.alternate} head={e.text_h1} par={e.text_p} link={e.link}/>
                     )
                 })}
 

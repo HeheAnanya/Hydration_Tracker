@@ -12,6 +12,7 @@
     height: auto;
     position: static;
     z-index: 5;
+    /* transition: all 0.4s ease-in-out; */
 
 }
 .topics{
