@@ -3,7 +3,7 @@ import './BlogCard.css'
 
 const BlogCard = (prop) => {
   return (
-    <div className='blog_card'>
+    <a href={prop.link} style={{textDecoration:"none"}}><div className='blog_card'>
         <img src= {prop.src}/>
         <div className='content'>
                   <h2>{prop.head}</h2>
@@ -12,7 +12,7 @@ const BlogCard = (prop) => {
         </div>
 
 
-    </div>
+    </div></a>
   )
 }
 

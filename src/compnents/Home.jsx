@@ -12,8 +12,9 @@ const Home = () => {
     setEmail("")
     setMess("")
     setName("")
-    console.log(data)
+
   }
+  console.log(data)
   return (
 <div className='main'>
   <div className='mess'>

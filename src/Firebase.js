@@ -9,10 +9,9 @@
 //   appId: "1:635077544408:web:ec212a9428638f465d0aad"
 // };
 
-// export const app = initializeApp(firebaseConfig);
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-
+import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyAgP0mwCFQjFIaOMRhBkNxk_Sgx57WMnY8",
   authDomain: "hydration-tracker-e6dbe.firebaseapp.com",
@@ -26,4 +25,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-export { auth, provider };
+const database = getFirestore(app)
+export { auth, provider, database }; 
+// export 
