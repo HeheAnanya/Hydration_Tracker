@@ -1,0 +1,61 @@
+.level {
+  border-radius: 20px;
+  border: 2px solid blanchedalmond;
+  padding: 20px;
+  width: 260px;
+  margin: 20px auto;
+  text-align: center;
+}
+.input {
+  margin-top: 10px;
+}
+input {
+  width: 80px;
+  border-radius: 20px;
+  text-align: center;
+  margin: 0 5px;
+}
+button {
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+.conversion{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+.gallon, .ounce, .cup, .litre{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid orange;
+  border-radius: 15px;
+  height: 100px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+ font-size: clamp(14px, 1.5vw, 20px);
+
+
+}
+
+.gallon:hover, .ounce:hover, .cup:hover, .litre:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+img{
+  height: 35%;
+  overflow: scroll;
+}
+
+
+
+
+
+

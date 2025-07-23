@@ -1,26 +1,32 @@
 import React,{useEffect, useState} from 'react'
 import './LoginForm.css'
-import { signInWithPopup } from "firebase/auth";
-import { auth, provider,  } from "../../Firebase";
+import dummyUsers from '../DummyData/dummy'
 
-const LoginForm = () => {
+const LoginForm = ({success}) => {
     const [email, setEmail]= useState("")
     const [name, setName]= useState("")
     const [phone, setPhone]= useState("")
     const [password, setPassword]= useState("")
-    function handleSubmit(){
-        const customer ={
-            displayName:name,
-            password:password,
-            email:email,
-            phone:phone
-        }
+    function handleSubmit(e){
+      e.preventDefault()
+      const customer = dummyUsers.find((user)=>{
+        user.email===email&& user.password===password && user.phone===phone && user.name=== name
+      })
+      if (customer){
         window.localStorage.setItem("user", JSON.stringify(customer))
+        success(customer)
         setEmail("")
         setName("")
         setPhone("")
         setPassword("")
-window.location.reload();
+
+      }
+      else{
+        alert("User Not Found")
+      }
+
+
+
         }
     useEffect(()=>{
         const user = window.localStorage.getItem("user")
@@ -32,19 +38,6 @@ window.location.reload();
             
         }
     },[])
-    function HandleGoogle(){
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        setName(user)
-        console.log(result)
-        window.localStorage.setItem("user", JSON.stringify({ displayName: user.displayName }));
-      })
-      .catch((error) => {
-        console.error("Error during login:", error);
-      });
-    }
-
   return (
     <div className='login-page'>
         <div className='left-section'>
@@ -66,8 +59,6 @@ window.location.reload();
         <label htmlFor='password'>Password:</label>
         <input id='password' type='password' onChange={(e)=>(setPassword(e.target.value))} value={password}  placeholder='Write your Password'/>
         <button onClick={handleSubmit} className="login-btn">Submit</button>
-        <button className='google-btn' onClick={HandleGoogle}>Google</button>
-
         </form>
     </div>
   )

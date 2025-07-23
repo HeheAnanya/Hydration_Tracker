@@ -65,9 +65,9 @@ const Content = () => {
 
             </div>
                         <div className='card'>
-                {list.map((e)=>{
+                {list.map((e,idx)=>{
                     return (
-                        <Card source={e.source} alt={e.alternate} head={e.text_h1} par={e.text_p} link={e.link}/>
+                        <Card source={e.source} alt={e.alternate} head={e.text_h1} par={e.text_p} link={e.link} key={idx}/>
                     )
                 })}
 

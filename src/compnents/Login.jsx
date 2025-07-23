@@ -1,40 +1,44 @@
 import React,{useEffect, useState} from "react";
 import { signInWithPopup } from "firebase/auth";
-import { auth, provider,  } from "../Firebase";
-// import { collection, addDoc } from "firebase/firestore";
-import Navbar from "./Navbar";
+import { auth, provider} from "../Firebase";
+import dummyUsers from "./DummyData/dummy";
 
 function Login() {
-  const [name, setName] = useState(null)
-  const handleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        setName(user)
-        console.log(result)
-        window.localStorage.setItem("user",JSON.stringify(user))
-        // alert(`Welcome, ${user.uid}`);
-      })
-      .catch((error) => {
-        console.error("Error during login:", error);
-      });
-  };
+  const [user, setUser]= useState(null)
+
   useEffect(()=>{
-    const user = localStorage.getItem("user")
-    if (user){
-      setName(JSON.parse(user))
+    const stored = localStorage.getItem("user")
+    if (stored){
+      setUser(JSON.parse(stored))
+      
     }
   },[])
-  // const collectionRef = collection(database, "users")
-  return (
-    <div>      
-      {name ? (
-        <button className="login">{name.displayName}</button>
-      ) : (
-        <button onClick={handleLogin} className="login">Login</button>
-      )}
-    </div>
-  );
+  function handleLogin(){
+    signInWithPopup(auth,provider).then((result)=>{
+      const userEmail = result.user.email
+      const dummyInfo = dummyUsers.find((e)=>(e.email===userEmail))
+      if (dummyInfo){
+      localStorage.setItem('user', JSON.stringify(dummyInfo))
+      setUser(dummyInfo)
+      window.location.reload()
+      }
+      else{
+        alert ("User not found")
+      }
+    }).catch((er)=>(console.log(er)))
+
+  }
+  return(
+    <>
+    {user ? (
+      <button className="login">{user.displayName}</button>
+    ):(
+      <button onClick={handleLogin} className="login">Login</button>
+    )}
+
+    </>
+  )
+
 }
 
 export default Login;

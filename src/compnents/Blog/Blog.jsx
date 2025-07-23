@@ -76,7 +76,7 @@ const Blog = () => {
         {data.map((e)=>{
             return(
                 <>
-                <BlogCard src={e.src} mess={e.mess} head={e.head} date={e.date} link={e.link}/>
+                <BlogCard src={e.src} mess={e.mess} head={e.head} date={e.date} link={e.link} key={e.id}/>
                 </>
             )
         })}
