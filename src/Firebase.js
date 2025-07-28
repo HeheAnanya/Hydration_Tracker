@@ -1,25 +1,14 @@
-// import { initializeApp } from "firebase/app";
-// import { getAuth, GoogleAuthProvider } from "firebase/auth";
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBUtyQUDpyUAaxJg5bBktVdNDSFMlgTjxQ",
-//   authDomain: "learn-c25f2.firebaseapp.com",
-//   projectId: "learn-c25f2",
-//   storageBucket: "learn-c25f2.firebasestorage.app",
-//   messagingSenderId: "635077544408",
-//   appId: "1:635077544408:web:ec212a9428638f465d0aad"
-// };
-
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyAgP0mwCFQjFIaOMRhBkNxk_Sgx57WMnY8",
-  authDomain: "hydration-tracker-e6dbe.firebaseapp.com",
-  projectId: "hydration-tracker-e6dbe",
-  storageBucket: "hydration-tracker-e6dbe.firebasestorage.app",
-  messagingSenderId: "993590400796",
-  appId: "1:993590400796:web:0b7831ebb8c15c2b4dccd9",
-  measurementId: "G-26W3PZELPC"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
