@@ -1,22 +1,3 @@
-// import React from 'react'
-// import './Card.css'
-
-// const Card = (prop) => {
-
-//   return (
-//     <div className='cards'>
-//         <div className='CardContent'>
-//                <img src={prop.source} alt={prop.alt
-//    }></img>
-
-//         </div>
-
-//     </div>
-//   )
-// }
-
-// export default Card
-
 import React from 'react';
 import './Card.css';
 

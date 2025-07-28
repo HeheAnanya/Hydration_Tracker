@@ -9,7 +9,6 @@ import Footer from '../compnents/Footer'
 const HomePage = () => {
   return (
     <div style={{backgroundColor: "rgb(244, 241, 241)"}}>
-        <Navbar/>
         <Home/>
         <Products/>
         <Footer/>

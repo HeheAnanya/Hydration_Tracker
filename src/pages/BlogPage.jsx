@@ -8,7 +8,6 @@ import Blog from '../compnents/Blog/Blog'
 const BlogPage = () => {
   return (
     <div>
-        <Navbar/>
         <Blog/>
 
         <Footer/>

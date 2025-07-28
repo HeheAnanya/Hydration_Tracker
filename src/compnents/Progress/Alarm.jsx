@@ -55,7 +55,7 @@ const Alarm = ({ intake, setIntake }) => {
     repeatIntervalRef.current = setInterval(() => {
       setShowAlert(true);
       playSound();
-    }, 10 * 60 * 1000);
+    }, 2*60 * 60 * 1000);
   };
 
   const dismiss = () => {

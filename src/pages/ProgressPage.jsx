@@ -1,97 +1,5 @@
-// import React, { useEffect, useState } from 'react';
-// import Navbar from '../compnents/Navbar';
-// import Footer from '../compnents/Footer';
-// import Prog from '../compnents/Progress/Prog';
-// import LoginForm from '../compnents/Progress/LoginForm';
-// import Calendar from '../compnents/Progress/Calendar';
-// import Alarm from '../compnents/Progress/Alarm';
-// import World from '../compnents/Progress/World';
-
-// const ProgressPage = () => {
-//   const [intake, setIntake] = useState(0);
-//   const [user, setUser] = useState(null);
-//   const [goal, setGoal] = useState(750);
-//   const [intakeHistory, setIntakeHistory] = useState({});
-//   const [selectedDate, setSelectedDate] = useState(new Date());
-
-//   const formattedDate = selectedDate.toISOString().split('T')[0];
-//   const today = new Date().toISOString().split('T')[0];
-
-//   useEffect(() => {
-//     const storedUser = JSON.parse(localStorage.getItem('user'));
-//     if (storedUser) {
-//       setUser(storedUser);
-//       if (storedUser.dailyGoal) setGoal(storedUser.dailyGoal);
-
-//       const history = JSON.parse(localStorage.getItem(`intake_${storedUser.email}`)) || {};
-//       setIntakeHistory(history);
-
-//       const selectedDayIntake = history[formattedDate] || 0;
-//       setIntake(selectedDayIntake);
-//     }
-//   }, []);
-
-//   useEffect(() => {
-//     if (user) {
-//       const history = JSON.parse(localStorage.getItem(`intake_${user.email}`)) || {};
-//       const selectedDayIntake = history[formattedDate] || 0;
-//       setIntakeHistory(history);
-//       setIntake(selectedDayIntake);
-//     }
-//   }, [selectedDate]);
-
-//   function GoalUpdate(newGoal) {
-//     setGoal(newGoal);
-//     if (user) {
-//       const updatedUser = { ...user, dailyGoal: newGoal };
-//       localStorage.setItem('user', JSON.stringify(updatedUser));
-//       setUser(updatedUser);
-//     }
-//   }
-
-//   function updateIntake(newIntake) {
-//     setIntake(newIntake);
-//     if (user) {
-//       const updatedHistory = { ...intakeHistory, [formattedDate]: newIntake };
-//       setIntakeHistory(updatedHistory);
-//       localStorage.setItem(`intake_${user.email}`, JSON.stringify(updatedHistory));
-//     }
-//   }
-
-//   return (
-//     <>
-//       {user ? (
-//         <>
-//           <Navbar />
-//           <Calendar
-//             intakeHistory={intakeHistory}
-//             goal={goal}
-//             selectedDate={selectedDate}
-//             setSelectedDate={setSelectedDate}
-//           />
-//           <Prog intake={intake} goal={goal} setGoal={GoalUpdate} />
-//           <World />
-//           {formattedDate === today && <Alarm intake={intake} setIntake={updateIntake} />}
-//           <Footer />
-//         </>
-//       ) : (
-//         <>
-//           <Navbar />
-//           <LoginForm success={(user) => setUser(user)} />
-//           <Footer />
-//         </>
-//       )}
-//     </>
-//   );
-// };
-
-// export default ProgressPage;
-
-
-
 // ProgressPage.jsx
 import React, { useEffect, useState } from 'react';
-import Navbar from '../compnents/Navbar';
 import Footer from '../compnents/Footer';
 import Prog from '../compnents/Progress/Prog';
 import LoginForm from '../compnents/Progress/LoginForm';
@@ -100,77 +8,104 @@ import Alarm from '../compnents/Progress/Alarm';
 import World from '../compnents/Progress/World';
 import './ProgressPage.css';
 
-const ProgressPage = () => {
+const ProgressPage = ({ user, setUser }) => {
   const [intake, setIntake] = useState(0);
-  const [user, setUser] = useState(null);
-  const [goal, setGoal] = useState(750);
+  const [goal, setGoal] = useState(750); // Default goal
   const [intakeHistory, setIntakeHistory] = useState({});
+  const [goalsHistory, setGoalsHistory] = useState({}); // NEW STATE for per-day goals
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const formattedDate = selectedDate.toISOString().split('T')[0];
   const today = new Date().toISOString().split('T')[0];
 
+  // Effect to load user-specific data (intake and goals) when user or selected date changes
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (storedUser) {
-      setUser(storedUser);
-      if (storedUser.dailyGoal) setGoal(storedUser.dailyGoal);
+    if (user && user.email) {
+      // Load intake history for the specific user
+      const storedIntakeHistory = JSON.parse(localStorage.getItem(`intake_${user.email}`)) || {};
+      setIntakeHistory(storedIntakeHistory);
 
-      const history = JSON.parse(localStorage.getItem(`intake_${storedUser.email}`)) || {};
-      setIntakeHistory(history);
+      // Load goals history for the specific user
+      const storedGoalsHistory = JSON.parse(localStorage.getItem(`goals_${user.email}`)) || {};
+      setGoalsHistory(storedGoalsHistory);
 
-      const selectedDayIntake = history[formattedDate] || 0;
-      setIntake(selectedDayIntake);
+      // Set intake for the currently selected date
+      const currentDayIntake = storedIntakeHistory[formattedDate] || 0;
+      setIntake(currentDayIntake);
+
+      // Set goal for the currently selected date (fallback to user's dailyGoal or default)
+      const currentDayGoal = storedGoalsHistory[formattedDate] || user.dailyGoal || 750;
+      setGoal(currentDayGoal);
+
+    } else {
+      // If no user, reset all states to default/empty
+      setIntake(0);
+      setGoal(750);
+      setIntakeHistory({});
+      setGoalsHistory({});
     }
-  }, []);
+  }, [user, formattedDate]); // Dependency array: re-run if user or selected date changes
 
-  useEffect(() => {
-    if (user) {
-      const history = JSON.parse(localStorage.getItem(`intake_${user.email}`)) || {};
-      const selectedDayIntake = history[formattedDate] || 0;
-      setIntakeHistory(history);
-      setIntake(selectedDayIntake);
-    }
-  }, [selectedDate]);
 
+  // --- Goal Update Function ---
+  // This function now updates the goal specifically for the selected date
   function GoalUpdate(newGoal) {
-    setGoal(newGoal);
-    if (user) {
-      const updatedUser = { ...user, dailyGoal: newGoal };
-      localStorage.setItem('user', JSON.stringify(updatedUser));
-      setUser(updatedUser);
+    const parsedNewGoal = Number(newGoal);
+    if (isNaN(parsedNewGoal) || parsedNewGoal < 0) return; // Basic validation
+
+    // Update the local goal state for the current day
+    setGoal(parsedNewGoal);
+
+    // Save this goal specifically for the selected date in localStorage
+    if (user && user.email) {
+      const updatedGoalsHistory = { ...goalsHistory, [formattedDate]: parsedNewGoal };
+      setGoalsHistory(updatedGoalsHistory); // Update local state
+      localStorage.setItem(`goals_${user.email}`, JSON.stringify(updatedGoalsHistory));
     }
   }
 
+  // --- Intake Update Function ---
   function updateIntake(newIntake) {
-    setIntake(newIntake);
-    if (user) {
-      const updatedHistory = { ...intakeHistory, [formattedDate]: newIntake };
-      setIntakeHistory(updatedHistory);
+    const parsedNewIntake = Number(newIntake);
+    if (isNaN(parsedNewIntake) || parsedNewIntake < 0) return; // Basic validation
+
+    setIntake(parsedNewIntake);
+    if (user && user.email) {
+      const updatedHistory = { ...intakeHistory, [formattedDate]: parsedNewIntake };
+      setIntakeHistory(updatedHistory); // Update local state
       localStorage.setItem(`intake_${user.email}`, JSON.stringify(updatedHistory));
     }
   }
 
   return (
     <>
-      <Navbar />
       {user ? (
         <div className="progress-page">
           <div className="dashboard-container">
             <div className="dashboard-left">
-              <div className="dashboard-card"><Prog intake={intake} goal={goal} setGoal={GoalUpdate} /></div>
+              <div className="dashboard-card">
+                <Prog intake={intake} goal={goal} setGoal={GoalUpdate} />
+              </div>
             </div>
             <div className="dashboard-right">
-              <div className="dashboard-card"><Calendar intakeHistory={intakeHistory} goal={goal} selectedDate={selectedDate} setSelectedDate={setSelectedDate} /></div>
-            <div className="time-widgets">
-              <World />
-              {formattedDate === today && <Alarm intake={intake} setIntake={updateIntake} />}
-            </div>
+              <div className="dashboard-card">
+                <Calendar
+                  intakeHistory={intakeHistory}
+                  goal={goal}
+                  selectedDate={selectedDate}
+                  setSelectedDate={setSelectedDate}
+                />
+              </div>
+              <div className="time-widgets">
+                <World />
+                {/* <--- REMOVED CONDITIONAL RENDERING HERE */}
+                <Alarm intake={intake} setIntake={updateIntake} /> {/* <-- ALARM IS NOW ALWAYS RENDERED */}
+              </div>
             </div>
           </div>
         </div>
       ) : (
-        <LoginForm success={(user) => setUser(user)} />
+        <LoginForm success={setUser} />
       )}
       <Footer />
     </>

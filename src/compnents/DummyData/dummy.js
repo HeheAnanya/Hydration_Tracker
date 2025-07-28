@@ -1,25 +1,28 @@
-const dummyUsers = {
-  "ananyanarang1411@gmail.com": {
+const dummyUsers = [
+  {
     displayName: "Ananya",
     email: "ananyanarang1411@gmail.com",
+    password: "1234",
+    phone: "9810820774",
     dailyGoal: 1800,
-    phone:"9810820774",
-    alarmEnabled: true
+    alarmEnabled: true,
   },
-  "ananya.narang2024@nst.rishihood.edu.in": {
-    displayName: "Ananya Rishihood",
+  {
+    displayName: "Ananya 2",
     email: "ananya.narang2024@nst.rishihood.edu.in",
+    password: "5678",
+    phone: "1234567899",
     dailyGoal: 3500,
-    phone:"1234567899",
-    alarmEnabled: true
+    alarmEnabled: true,
   },
-    "knarang383@gmail.com": {
+  {
     displayName: "Neha",
     email: "knarang383@gmail.com",
+    password: "abcd",
+    phone: "9432114567",
     dailyGoal: 2000,
-    phone:"9876543211",
-    alarmEnabled: true
-  }
-};
+    alarmEnabled: true,
+  },
+];
 
 export default dummyUsers;
