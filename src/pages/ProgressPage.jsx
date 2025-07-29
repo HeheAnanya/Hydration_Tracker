@@ -99,7 +99,12 @@ const ProgressPage = ({ user, setUser }) => {
               <div className="time-widgets">
                 <World />
                 {/* <--- REMOVED CONDITIONAL RENDERING HERE */}
-                <Alarm intake={intake} setIntake={updateIntake} /> {/* <-- ALARM IS NOW ALWAYS RENDERED */}
+<Alarm
+  selectedDate={selectedDate}
+  intakeHistory={intakeHistory}
+  setIntakeHistory={setIntakeHistory}
+  updateIntake={updateIntake}
+/>
               </div>
             </div>
           </div>
