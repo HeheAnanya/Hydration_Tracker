@@ -2,10 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Intake from './Intake';
 import './Alarm.css';
 
-const Alarm = () => {
-  const [intake, setIntake] = useState(0);
-const [selectedDate, setSelectedDate] = useState(new Date());
-const [intakeHistory, setIntakeHistory] = useState({});
+const Alarm = ({ intake, setIntake }) => {
   const [alarmTime, setAlarmTime] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const [lastResetDay, setLastResetDay] = useState(new Date().getDate());
@@ -21,16 +18,11 @@ const [intakeHistory, setIntakeHistory] = useState({});
     audioRef.current = new Audio('/alarm.mp3'); // Place alarm.mp3 in public folder
   }, []);
 
-const playSound = () => {
-  if (audioRef.current) {
-    audioRef.current.pause();
-    audioRef.current.currentTime = 0; // Reset
-    audioRef.current.play().catch((err) => {
-      console.error('Audio play failed:', err);
-    });
-  }
-};
-
+  const playSound = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch(() => {});
+    }
+  };
 
   const getDelayUntilAlarm = (targetTime) => {
     const now = new Date();
@@ -92,7 +84,7 @@ const playSound = () => {
     const checkForNewDay = setInterval(() => {
       const now = new Date();
       if (now.getDate() !== lastResetDay) {
-        setIntake({});
+        setIntake(0);
         setLastResetDay(now.getDate());
         clearInterval(repeatIntervalRef.current);
         repeatIntervalRef.current = setInterval(triggerAlarm, 10 * 60 * 1000);
@@ -131,11 +123,7 @@ const playSound = () => {
           <p style={{ color: 'red', fontWeight: 'bold' }}>
             🚨 It's time to drink water!
           </p>
-<Intake
-  selectedDate={selectedDate}
-  intakeHistory={intakeHistory}
-  setIntakeHistory={setIntakeHistory}
-/>
+          <Intake intake={intake} setIntake={setIntake} />
           <button onClick={hide}>Submit</button>
           <button onClick={handleSnooze} style={{ marginLeft: '10px' }}>
             Snooze 10 min
