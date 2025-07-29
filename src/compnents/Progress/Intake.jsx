@@ -1,9 +1,8 @@
-// Intake.jsx
 import React from 'react';
 import './Intake.css';
 
 const Intake = ({ selectedDate, intakeHistory, setIntakeHistory, onIntakeChange }) => {
-  const dateKey = selectedDate.toISOString().split('T')[0];
+  const dateKey = selectedDate.toISOString().split('T')[0]; // Converts the date into YYYY-MM-DD format
   const intake = intakeHistory[dateKey] || 0;
 
   function handleChange(e) {
@@ -12,7 +11,7 @@ const Intake = ({ selectedDate, intakeHistory, setIntakeHistory, onIntakeChange 
       const updated = { ...intakeHistory, [dateKey]: value };
       setIntakeHistory(updated);
       if (onIntakeChange) {
-        onIntakeChange(value); // <-- This updates global intake and localStorage
+        onIntakeChange(value);
       }
     }
   }

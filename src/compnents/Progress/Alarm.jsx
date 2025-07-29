@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Intake from './Intake';
 import './Alarm.css';
 
-const Alarm = ({ selectedDate, intakeHistory, setIntakeHistory, updateIntake }) => {
+const Alarm = ({ intake, setIntake }) => {
   const [alarmTime, setAlarmTime] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const [lastResetDay, setLastResetDay] = useState(new Date().getDate());
@@ -14,7 +14,7 @@ const Alarm = ({ selectedDate, intakeHistory, setIntakeHistory, updateIntake }) 
   const audioRef = useRef(null);
 
   useEffect(() => {
-    audioRef.current = new Audio('/alarm.mp3');
+    audioRef.current = new Audio('/alarm.mp3'); // Place alarm.mp3 in public folder
   }, []);
 
   const playSound = () => {
@@ -49,10 +49,12 @@ const Alarm = ({ selectedDate, intakeHistory, setIntakeHistory, updateIntake }) 
   const triggerAlarm = () => {
     setShowAlert(true);
     playSound();
+
+    // 🔁 Repeat reminder every 10 minutes
     repeatIntervalRef.current = setInterval(() => {
       setShowAlert(true);
       playSound();
-    }, 2 * 60 * 60 * 1000);
+    }, 2*60 * 60 * 1000);
   };
 
   const dismiss = () => {
@@ -73,27 +75,31 @@ const Alarm = ({ selectedDate, intakeHistory, setIntakeHistory, updateIntake }) 
     snoozeTimeoutRef.current = setTimeout(() => {
       setShowAlert(true);
       playSound();
-    }, 10 * 60 * 1000);
+    }, 10 * 60 * 1000); // ⏰ 10 minutes snooze
   };
 
+  // 🔁 Reset intake at new day
   useEffect(() => {
     const checkForNewDay = setInterval(() => {
       const now = new Date();
       if (now.getDate() !== lastResetDay) {
+        setIntake(0);
         setLastResetDay(now.getDate());
-        setShowAlert(false);
+        clearInterval(repeatIntervalRef.current);
+        repeatIntervalRef.current = setInterval(triggerAlarm, 10 * 60 * 1000);
       }
     }, 60 * 1000);
 
     return () => clearInterval(checkForNewDay);
   }, [lastResetDay]);
 
+  // ✅ Global reminder toggle
   useEffect(() => {
     if (!reminder) return;
     const interval = setInterval(() => {
       alert('Time to drink water! 🥤');
       playSound();
-    }, 10 * 60 * 1000);
+    }, 10 * 60 * 1000); // 10 mins
     return () => clearInterval(interval);
   }, [reminder]);
 
@@ -116,14 +122,7 @@ const Alarm = ({ selectedDate, intakeHistory, setIntakeHistory, updateIntake }) 
           <p style={{ color: 'red', fontWeight: 'bold' }}>
             🚨 It's time to drink water!
           </p>
-
-          <Intake
-            selectedDate={selectedDate}
-            intakeHistory={intakeHistory}
-            setIntakeHistory={setIntakeHistory}
-            onIntakeChange={updateIntake}
-          />
-
+          <Intake intake={intake} setIntake={setIntake} />
           <button onClick={hide}>Submit</button>
           <button onClick={handleSnooze} style={{ marginLeft: '10px' }}>
             Snooze 10 min
