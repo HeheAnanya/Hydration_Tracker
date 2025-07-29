@@ -104,7 +104,7 @@ const handleLogout = () => {
     return (
     <>
             <div className='nav-main'>
-                <img src={logo} alt="Hydra logo" className='logo' onClick={() => (navigate(""))} />
+                <img src={logo} alt="Hydra logo" className='logo' onClick={() => (navigate("/"))} />
                 <ul className='topics'>
                     <li onClick={() => (navigate("/"))}><a href="#">HOME</a></li>
                     <li onClick={() => (navigate("/facts"))}><a href="#">FACTS</a></li>
